@@ -2,6 +2,8 @@ import path from 'path'
 import express from 'express'
 import chalk from 'chalk'
 import hbs from 'hbs'
+import {geocode} from './utils/geocode'
+import {forecast} from './utils/forecast'
 
 const app = express()
 const port = 3000
@@ -35,7 +37,25 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-    res.send('Weather page!')
+    const {query} = req;
+
+    if(!query.address) return res.send({
+        error: 'You must provide an address.'
+    })
+
+    geocode(query.address, (error, {latitude, longitude, location} = {}) => {
+        if(error) return res.send({error})
+
+        forecast(latitude, longitude, (error, forecastData)=> {
+            if(error) return res.send({error});
+        
+            res.send({
+                forecast: forecastData,
+                location,
+                address: query.address
+            })
+        });
+    })
 })
 
 app.get('/help/*', (req, res) => {
