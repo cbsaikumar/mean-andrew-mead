@@ -1,0 +1,19 @@
+{
+  "name": "web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r esm src/app.js -e js,hbs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "hbs": "^4.0.5",
+    "nodemon": "^1.19.2"
+  }
+}
