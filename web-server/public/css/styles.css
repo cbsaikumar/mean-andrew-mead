@@ -69,11 +69,6 @@ header a{
     100% { transform: rotate(360deg); }
   }
 
-.weather-content{
-    position: absolute;
-    top: 50%;
-}
-
 form{
     margin-top: 10px;
 }
