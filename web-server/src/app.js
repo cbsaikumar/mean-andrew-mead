@@ -6,7 +6,7 @@ import {geocode} from './utils/geocode'
 import {forecast} from './utils/forecast'
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, '../templates/views'))
